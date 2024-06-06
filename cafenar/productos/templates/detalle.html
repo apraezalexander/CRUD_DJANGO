@@ -7,13 +7,22 @@
 {% endblock %}
 
 {% block content %}
-    <div>
+<section class="detalle-producto">
+    <div class="contenedor-imagen">
+        <h2>{{ producto.nombre }}</h2>
+
         {% if producto.imagen %}
         <img src="{{ producto.imagen.url }}" alt="{{ producto.nombre }}">
         {% endif %}
-        <p>{{ producto.descripcion }}</p>
-        <p>${{ producto.precio }}</p>
-        <button>Comprar</button>
-        <a href="{% url 'productos' %}"><button>Volver</button></a>
+        <p class="precio">${{ producto.precio }}</p>
+        <p class="stock">Stock: {{ producto.stock }}</p>
+        <div class="grupo-botones">
+            <button class="boton detalle-boton">Comprar</button>
+            <a href="{% url 'productos' %}" class="boton detalle-boton">Volver</a>
+        </div>
     </div>
+    <article class="info-producto">
+        <p class="descripcion">{{ producto.descripcion }}</p>
+    </article>
+</section>
 {% endblock %}
